@@ -3,11 +3,18 @@ package se.lernia.java;
 public class Main {
 
     public static void main(String[] args) {
+        int number = 10;
+        for (int i = 0; i < 10; i++) {
+            System.out.println(number);
+            number += 10;
+        }
 
-
-
+        int i = 0;
+        while(i < 10) {
+            System.out.println((i + 1) * 10);
+            i++;
+        }
     }
-
 }
 
 //Todo: Skriv en applikation som skriver ut talen 10,20,30… upp till 100.
