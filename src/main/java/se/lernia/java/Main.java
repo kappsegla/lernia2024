@@ -13,6 +13,19 @@ public class Main {
 
         boolean palin = isPalindrome("racecar");
         System.out.println(palin);
+
+        System.out.println(trimZero("00000123506"));
+        System.out.println(trimZero("000100"));
+        System.out.println(trimZero("0000"));
+    }
+
+    private static String trimZero(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            if (number.charAt(i) != '0') {
+                return number.substring(i);
+            }
+        }
+        throw new RuntimeException("String with only zeros or other non digits found");
     }
 
     public static boolean isPalindrome(String word) {
@@ -23,14 +36,14 @@ public class Main {
         int count = 0;
 
         for (int i = 0; i < word.length(); i++) {
-            if(word.charAt(i)== 'a') {
+            if (word.charAt(i) == 'a') {
                 count++;
             }
         }
         return count;
     }
 
-    public static boolean wordComparerIgnoreCase(String word1, String word2){
+    public static boolean wordComparerIgnoreCase(String word1, String word2) {
         return word1.equalsIgnoreCase(word2);
     }
 
@@ -40,5 +53,6 @@ public class Main {
 }
 
 
-//Todo: Skapa en metod som returnerar true om en String är ett palindrom
-//Todo: Skapa en metod som tar en string innehållande siffror som inparameter och tar bort inledande nollor. Input: 00000123569 Output : 123569
+//Todo: Skapa en metod som tar en string innehållande siffror som inparameter och tar bort inledande nollor.
+// Input: 00000123569 Output : 123569
+// Input: 000100 Output: 100
