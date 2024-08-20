@@ -1,5 +1,7 @@
 package se.lernia.java;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -35,6 +37,15 @@ public class Main {
         return (number1 + number2 + number3) / 3;
     }
 
+//    //varargs
+//    static float average(float... numbers){
+//        float sum = 0;
+//        for (int i = 0; i < numbers.length; i++) {
+//            sum += numbers[i];
+//        }
+//        return sum / numbers.length;
+//    }
+
     static float average(float[] numbers) {
         float sum = 0;
         for (int i = 0; i < numbers.length; i++) {
@@ -42,6 +53,7 @@ public class Main {
         }
         return sum / numbers.length;
     }
+
 }
 
 //Todo: Skriv en metod som tar MÅNGA värden och returnerar medelvärdet... (Olika sätt att lösa det på finns)
