@@ -10,6 +10,13 @@ public class Main {
         System.out.println(letterCounter(s));
 
         System.out.println(wordComparerIgnoreCase("aA", "Aa"));
+
+        boolean palin = isPalindrome("racecar");
+        System.out.println(palin);
+    }
+
+    public static boolean isPalindrome(String word) {
+        return wordComparerIgnoreCase(word, reverse(word));
     }
 
     public static int letterCounter(String word) {
@@ -33,6 +40,5 @@ public class Main {
 }
 
 
-//Todo: Skapa en metod som returnerar en String reversed
-//Todo: Skapa en metod som tar en string innehållande siffror som inparameter och tar bort inledande nollor. Input: 00000123569 Output : 123569
 //Todo: Skapa en metod som returnerar true om en String är ett palindrom
+//Todo: Skapa en metod som tar en string innehållande siffror som inparameter och tar bort inledande nollor. Input: 00000123569 Output : 123569
