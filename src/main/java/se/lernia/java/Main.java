@@ -19,9 +19,13 @@ public class Main {
         }
         return count;
     }
+
+    public static boolean wordComparer(String word1, String word2){
+        return word1.equals(word2);
+    }
 }
 
-//Todo: Skriv en metod som tar en String som inparameter och returnerar hur många a det finns
+
 //Todo: Skriv en metod som tar två String som inparametrar och returnerar true eller false om de är lika eller olika
 //Todo: Skapa en metod som ovan men som ignorerar case vid jämförelsen
 
