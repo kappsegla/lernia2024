@@ -6,6 +6,9 @@ public class Main {
 
         int result =max(10, 5);
         System.out.println(result);
+
+        float medelvarde = average(15.4f, 4.3f);
+        System.out.println(medelvarde);
     }
 
     static int max(int tal1, int tal2) {
@@ -15,10 +18,12 @@ public class Main {
         return tal2;
     }
 
+    static float average(float number1, float number2){
+        return (number1 + number2) / 2;
+    }
 
 }
 
-//Todo: Skriv en metod som tar 2 heltal som inparametrar och returnerar det största talet
 //Todo: Skriv en metod som tar 2 float som inparametrar och returnerar medelvärdet
 //Todo: Skriv en metod som tar 3 float som inparametrar och returnerar medelvärdet
 //Todo: Skriv en metod som tar MÅNGA värden och returnerar medelvärdet... (Olika sätt att lösa det på finns)
