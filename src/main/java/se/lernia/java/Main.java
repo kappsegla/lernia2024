@@ -3,14 +3,20 @@ package se.lernia.java;
 public class Main {
 
     public static void main(String[] args) {
-        for (char c = 'A'; c <='Z'; c++) {
-            System.out.print(c + " ");
-        }
+
+        int result =max(10, 5);
+        System.out.println(result);
     }
+
+    static int max(int tal1, int tal2) {
+        if (tal1 > tal2) {
+            return tal1;
+        }
+        return tal2;
+    }
+
+
 }
-
-
-//Todo: Skriv en applikation som skriver ut alfabetet a,b,c…
 
 //Todo: Skriv en metod som tar 2 heltal som inparametrar och returnerar det största talet
 //Todo: Skriv en metod som tar 2 float som inparametrar och returnerar medelvärdet
