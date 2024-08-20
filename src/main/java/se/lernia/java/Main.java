@@ -7,8 +7,11 @@ public class Main {
         int result =max(10, 5);
         System.out.println(result);
 
-        float medelvarde = average(15.4f, 4.3f);
-        System.out.println(medelvarde);
+        float averageValue = average(15.4f, 4.3f);
+        System.out.println(averageValue);
+
+        averageValue = average(15.4f, 4.3f, 1.0f);
+        System.out.println(averageValue);
     }
 
     static int max(int tal1, int tal2) {
@@ -18,13 +21,19 @@ public class Main {
         return tal2;
     }
 
+    static float average(int number1, int number2){
+        return (number1 + number2) / 2.0f;
+    }
     static float average(float number1, float number2){
         return (number1 + number2) / 2;
+    }
+    //This is method overloading, multiple methods with same name but different parameters.
+    static float average(float number1, float number2, float number3){
+        return (number1 + number2 + number3) / 3;
     }
 
 }
 
-//Todo: Skriv en metod som tar 2 float som inparametrar och returnerar medelvärdet
 //Todo: Skriv en metod som tar 3 float som inparametrar och returnerar medelvärdet
 //Todo: Skriv en metod som tar MÅNGA värden och returnerar medelvärdet... (Olika sätt att lösa det på finns)
 
