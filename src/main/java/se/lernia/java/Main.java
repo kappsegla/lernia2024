@@ -3,21 +3,12 @@ package se.lernia.java;
 public class Main {
 
     public static void main(String[] args) {
-        int number = 10;
-        for (int i = 0; i < 10; i++) {
-            System.out.println(number);
-            number += 10;
-        }
-
-        int i = 0;
-        while(i < 10) {
-            System.out.println((i + 1) * 10);
-            i++;
+        for (int i = 10; i >= 0 ; i--) {
+            System.out.println(i);
         }
     }
 }
 
-//Todo: Skriv en applikation som skriver ut talen 10,20,30… upp till 100.
 //Todo: Skriv en applikation som med utskrift räknar ner baklänges från 10 till 0.
 //Todo: Skriv en applikation som skriver ut alfabetet a,b,c…
 
