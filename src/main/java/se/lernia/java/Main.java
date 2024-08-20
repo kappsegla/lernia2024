@@ -12,6 +12,9 @@ public class Main {
 
         averageValue = average(15.4f, 4.3f, 1.0f);
         System.out.println(averageValue);
+
+        float[] values =  {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f};
+        System.out.println(average(values));
     }
 
     static int max(int tal1, int tal2) {
@@ -32,9 +35,15 @@ public class Main {
         return (number1 + number2 + number3) / 3;
     }
 
+    static float average(float[] numbers) {
+        float sum = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+        }
+        return sum / numbers.length;
+    }
 }
 
-//Todo: Skriv en metod som tar 3 float som inparametrar och returnerar medelvärdet
 //Todo: Skriv en metod som tar MÅNGA värden och returnerar medelvärdet... (Olika sätt att lösa det på finns)
 
 //Todo: Skriv en metod som tar en String som inparameter och returnerar hur många a det finns
