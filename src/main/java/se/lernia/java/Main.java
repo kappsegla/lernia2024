@@ -3,13 +3,13 @@ package se.lernia.java;
 public class Main {
 
     public static void main(String[] args) {
-        for (int i = 10; i >= 0 ; i--) {
-            System.out.println(i);
+        for (char c = 'A'; c <='Z'; c++) {
+            System.out.print(c + " ");
         }
     }
 }
 
-//Todo: Skriv en applikation som med utskrift räknar ner baklänges från 10 till 0.
+
 //Todo: Skriv en applikation som skriver ut alfabetet a,b,c…
 
 //Todo: Skriv en metod som tar 2 heltal som inparametrar och returnerar det största talet
