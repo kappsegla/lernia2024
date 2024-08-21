@@ -6,6 +6,9 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
+
+        printEvenNumbers();
+
         String s = "Heja";
         System.out.println(letterCounter(s));
 
@@ -50,8 +53,19 @@ public class Main {
     public static String reverse(String word) {
         return new StringBuilder(word).reverse().toString();
     }
+
+    public static void printEvenNumbers(){
+        for (int i = 2; i <= 10; i++) {
+            if( i % 2 == 0) {
+                System.out.println(i);
+            }
+        }
+    }
+
 }
 
+
+//Todo: Skapa en metod som skriver ut jämna tal 2 4 6 osv...
 
 //Todo: Skapa en metod som tar en string innehållande siffror som inparameter och tar bort inledande nollor.
 // Input: 00000123569 Output : 123569
