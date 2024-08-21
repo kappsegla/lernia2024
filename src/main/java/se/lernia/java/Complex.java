@@ -20,14 +20,7 @@ public class Complex {
         System.out.print("Please enter your name ");
         String name = sc.nextLine();
         System.out.println("Please enter your starting score");
-        int startingScore = 0;
-        try {
-            startingScore = sc.nextInt();
-        } catch (InputMismatchException e) {
-            //Handle invalid inputs here
-            System.out.println("You can't do that. You will get zero as score");
-        }
-        sc.nextLine(); //To remove trailing return after nextInt()
+        int startingScore = readInt(sc);
 
         Player player1 = new Player(name, startingScore);
         player1.increaseScore();
@@ -40,5 +33,18 @@ public class Complex {
         System.out.println("Please enter starting score for player 2");
     }
 
-
+    public static int readInt(Scanner scanner) {
+        int startingScore = 0;
+        while (true) {
+            try {
+                startingScore = sc.nextInt();
+                sc.nextLine();  //Remove trailing return from keyboard input buffer
+                return startingScore;
+            } catch (InputMismatchException e) {
+                //Handle invalid inputs here
+                System.out.println("You can't do that. Try again");
+                sc.nextLine();
+            }
+        }
+    }
 }
