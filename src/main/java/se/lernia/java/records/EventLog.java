@@ -33,9 +33,9 @@ public class EventLog {
     static ArrayList<Event> events = new ArrayList<>();
 
     public static void main(String[] args) {
-        //storeEvent("Error", "1234");
-        //storeEvent("Warning", "1234");
-        //storeEvent("Break", "999");
+        storeEvent("Error", "1234");
+        storeEvent("Warning", "1234");
+        storeEvent("Break", "999");
 
         events.forEach(System.out::println);
         System.out.println();
@@ -46,7 +46,7 @@ public class EventLog {
         printList(result);
 
         var event = latestEvent();
-        event.ifPresent(value -> System.out.println("Latest event type: " + value.time()));
+        event.ifPresent(value -> System.out.println("Latest event type: " + value.type()));
 
         var currentTime = LocalDateTime.now();
         result = filterEvents(new TimeInterval(currentTime.minusDays(1), currentTime.plusDays(1)));
