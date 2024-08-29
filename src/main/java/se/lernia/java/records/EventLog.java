@@ -33,9 +33,10 @@ public class EventLog {
     static ArrayList<Event> events = new ArrayList<>();
 
     public static void main(String[] args) {
-        storeEvent("Error", "1234");
-        storeEvent("Warning", "1234");
-        storeEvent("Break", "999");
+        storeEvent(new ErrorEvent(), "1234");
+        storeEvent(new WarningEvent(), "1234");
+        storeEvent(new BreakEvent(), "999");
+        storeEvent(new NormalEvent(), "1234");
 
         events.forEach(System.out::println);
         System.out.println();
@@ -43,7 +44,8 @@ public class EventLog {
         if (result.isEmpty())
             System.out.println("No events found");
 
-        printList(result);
+        //printList(result);
+        printEvents(events);
 
         var event = latestEvent();
         event.ifPresent(value -> System.out.println("Latest event type: " + value.type()));
@@ -52,8 +54,29 @@ public class EventLog {
         result = filterEvents(new TimeInterval(currentTime.minusDays(1), currentTime.plusDays(1)));
     }
 
-    private static void storeEvent(String type, String id) {
-        Event e = new Event(new EventType(type), new EventTrigger(id), LocalDateTime.now());
+    private static void printEvents(ArrayList<Event> events) {
+        for (Event event : events) {
+            EventType type = event.type();
+
+            switch (type) {
+                case ErrorEvent errorEvent -> System.out.println("ERROR");
+                case WarningEvent warningEvent -> System.out.println("!!Warning!!");
+                case BreakEvent breakEvent -> System.out.println("Break");
+                case NormalEvent normalEvent -> System.out.println("_Normal_");
+            }
+
+//            if( type instanceof ErrorEvent errorEvent )
+//                System.out.println("ERROR");
+//            else if( type instanceof WarningEvent warningEvent )
+//                System.out.println("!!Warning!!");
+//            else if ( type instanceof BreakEvent breakEvent) {
+//                System.out.println("Break");
+//            }
+        }
+    }
+
+    private static void storeEvent(EventType type, String id) {
+        Event e = new Event(type, new EventTrigger(id), LocalDateTime.now());
         events.add(e);
     }
 
@@ -109,8 +132,24 @@ class TimeInterval {
 record Event(EventType type, EventTrigger trigger, LocalDateTime time) {
 }
 
-record EventType(String name) {
+//record EventType(String name) {
+//}
+
+abstract sealed class EventType permits ErrorEvent, WarningEvent, BreakEvent, NormalEvent{
 }
+
+final class ErrorEvent extends EventType {
+}
+
+final class WarningEvent extends EventType {
+}
+
+final class BreakEvent extends EventType {
+}
+
+final class NormalEvent extends EventType {
+}
+
 
 record EventTrigger(String triggerId) {
 }
