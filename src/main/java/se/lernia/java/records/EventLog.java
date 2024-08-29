@@ -26,20 +26,27 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class EventLog {
 
     static ArrayList<Event> events = new ArrayList<>();
 
     public static void main(String[] args) {
-        storeEvent("Error", "1234");
-        storeEvent("Warning", "1234");
-        storeEvent("Break", "999");
+        //storeEvent("Error", "1234");
+        //storeEvent("Warning", "1234");
+        //storeEvent("Break", "999");
 
         events.forEach(System.out::println);
         System.out.println();
         var result = filterEvents(LocalDate.of(2024, 8, 28));
+        if (result.isEmpty())
+            System.out.println("No events found");
+
         printList(result);
+
+        var event = latestEvent();
+        event.ifPresent(value -> System.out.println("Latest event type: " + value.time()));
 
         var currentTime = LocalDateTime.now();
         result = filterEvents(new TimeInterval(currentTime.minusDays(1), currentTime.plusDays(1)));
@@ -67,6 +74,12 @@ public class EventLog {
                 filteredEvents.add(e);
         }
         return filteredEvents;
+    }
+
+    private static Optional<Event> latestEvent() {
+        if (events.isEmpty())
+            return Optional.empty();
+        return Optional.of(events.getLast());
     }
 
     private static void printList(ArrayList<Event> items) {
