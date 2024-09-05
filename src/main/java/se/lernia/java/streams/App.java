@@ -19,7 +19,7 @@ public class App {
                 .map(Project::name)
                 .collect(Collectors.toSet());
 
-        //projectNames.forEach(System.out::println);
+        projectNames.forEach(System.out::println);
     }
 
     private static void employeesWorkingOnMultipleProjects(List<Employee> employees) {
