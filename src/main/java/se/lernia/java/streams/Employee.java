@@ -7,4 +7,8 @@ public record Employee(String id, String firstName, String lastName, int salary,
     public String fullName() {
         return firstName() + " " + lastName();
     }
+
+    public int projectCount(){
+        return projects.size();
+    }
 }
