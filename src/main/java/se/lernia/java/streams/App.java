@@ -1,12 +1,9 @@
 package se.lernia.java.streams;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class App {
     public static void main(String[] args) {
@@ -15,11 +12,21 @@ public class App {
 
         //employeesWithSalaryOver2Mil(employees);
         //employeeWithHighestSalary(employees);
+        //employeesWorkingOnMultipleProjects(employees);
+        //Find distinct project names (Use flatMap, map, and distinct methods)
+        var projectNames= employees.stream()
+                .flatMap(e -> e.projects().stream())
+                .map(Project::name)
+                .collect(Collectors.toSet());
+
+        //projectNames.forEach(System.out::println);
+    }
+
+    private static void employeesWorkingOnMultipleProjects(List<Employee> employees) {
         //Find all employees who are working on more than one project (Use filter, map, and collect methods
         var hardWorking = employees.stream()
                 .filter(employee -> employee.projectCount() > 1)
                 .toList();
-
     }
 
     private static void employeeWithHighestSalary(List<Employee> employees) {
@@ -55,7 +62,6 @@ public class App {
 
         Predicate<Employee> pred4 = App::salaryOver2Mil;
  */
-
 class MyPredicate implements Predicate<Employee> {
 
     @Override
