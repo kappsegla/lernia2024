@@ -32,6 +32,7 @@ public class CollectionsDemo {
 
         //Method reference
         names.forEach(CollectionsDemo::test);
+        names.forEach(System.out::println);
     }
 
     public static void test(String name){
