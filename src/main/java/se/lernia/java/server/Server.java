@@ -29,7 +29,7 @@ public class Server {
             log.info("Server listening on port " + port);
             while (true) {
                 Socket socket = serverSocket.accept();
-                handleClient(socket);
+                Thread.ofVirtual().start(() -> handleClient(socket) );
             }
         } catch (IOException e) {
 
@@ -42,7 +42,15 @@ public class Server {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
             //Todo: handle client send and receive
-            //Read http request
+            String request = in.readLine();
+            String httpMethod = request.split(" ")[0];
+            String uri = request.split(" ")[1];
+
+            Servlet servlet = new Servlet();
+            var req = new Request(httpMethod, uri);
+            var resp = new Response();
+            servlet.service(req, resp);
+
             //Send response
             String response = """
                     HTTP/1.1 200 OK
