@@ -23,4 +23,15 @@ public class Request {
     public HashMap<String, String> headers() {
         return headers;
     }
+
+    /**
+     * When running behind gateway that adds x-forwarded-for header
+     * this method returns the client that connected to gateway.
+     * @return empty String or ip of client.
+     */
+    public String forwardedFor(){
+        return headers.getOrDefault("x-forwarded-for", "");
+    }
+
+
 }

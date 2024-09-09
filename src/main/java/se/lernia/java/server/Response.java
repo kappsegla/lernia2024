@@ -1,5 +1,7 @@
 package se.lernia.java.server;
 
+import java.util.HashMap;
+
 public class Response {
     private String statusCode = "405 Method not allowed";
     private String message = "";
