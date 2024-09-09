@@ -30,7 +30,7 @@ public class Server {
             log.info("Server listening on port " + port);
             while (true) {
                 Socket socket = serverSocket.accept();
-                Thread.ofVirtual().start(() -> handleClient(socket) );
+                Thread.ofVirtual().start(() -> handleClient(socket));
             }
         } catch (IOException e) {
 
@@ -49,9 +49,9 @@ public class Server {
 
             Servlet servlet = new Servlet();
             var req = new Request(httpMethod, uri);
-            in.lines()
-                    .forEach(s -> req.headers()
-                    .put(s.toLowerCase().split(": ")[0], s.toLowerCase().split(": ")[1]));
+            String header = "";
+            while (!(header = in.readLine()).isBlank())
+                req.headers().put(header.toLowerCase().split(": ")[0], header.toLowerCase().split(": ")[1]);
 
             var resp = new Response();
             servlet.service(req, resp);
