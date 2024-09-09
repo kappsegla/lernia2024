@@ -3,6 +3,7 @@ package se.lernia.java.server;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
 public class Server {
@@ -48,17 +49,19 @@ public class Server {
 
             Servlet servlet = new Servlet();
             var req = new Request(httpMethod, uri);
+            in.lines()
+                    .forEach(s -> req.headers()
+                    .put(s.toLowerCase().split(": ")[0], s.toLowerCase().split(": ")[1]));
+
             var resp = new Response();
             servlet.service(req, resp);
 
-            //Send response
-            String response = """
-                    HTTP/1.1 200 OK
-                    Content-Type: text/plain
-                    Content-Length: 11
-                    
-                    Hello World
-                    """;
+            String response = "HTTP/1.1 " + resp.statusCode() + "\r\n" +
+                              "Content-Type: " + resp.contentType() + "\r\n" +
+                              "Content-Length: " + resp.message().getBytes(StandardCharsets.UTF_8).length + "\r\n" +
+                              "\r\n" +
+                              resp.message();
+
             out.print(response);
             out.flush();
         } catch (IOException e) {
