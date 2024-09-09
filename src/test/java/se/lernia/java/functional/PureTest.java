@@ -27,6 +27,12 @@ class PureTest {
         assertEquals("Good morning Martin", result, "Greeting failed");
     }
 
+    @Test
+    @DisplayName("Greet with good afternoon after 12")
+    void greetWithGoodAfternoonAfter12() {
+        assertEquals("Good afternoon Martin", Pure.greeting("Martin", LocalTime.of(12,0)));
+    }
+
 
 
 }
