@@ -38,7 +38,7 @@ public class Server {
     }
 
     public void handleClient(Socket socket) {
-        log.info("Client connected from " + socket.getRemoteSocketAddress());
+
         try (Socket clientSocket = socket) {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
@@ -53,6 +53,10 @@ public class Server {
             while (!(header = in.readLine()).isBlank())
                 req.headers().put(header.toLowerCase().split(": ")[0], header.toLowerCase().split(": ")[1]);
 
+            if( req.forwardedFor().isBlank())
+                log.info("Client connected from " + socket.getRemoteSocketAddress());
+            else
+                log.info("Client connected from " + req.forwardedFor());
             var resp = new Response();
             servlet.service(req, resp);
 
