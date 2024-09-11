@@ -11,4 +11,9 @@ public class StringCalculatorTest {
         int result = StringCalculator.add("");
         assertThat(result).isEqualTo(0);
     }
+
+    @Test
+    void givenStringWith1WhenCallingAddThenReturn1() {
+        assertThat(StringCalculator.add("1")).isEqualTo(1);
+    }
 }
