@@ -1,5 +1,9 @@
 package se.lernia.java.tdd;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
 public class TDExample {
     private final Authorizer authorizer;
     private boolean hasDoneStuff = false;
@@ -20,4 +24,10 @@ public class TDExample {
     public boolean hasDoneStuff() {
         return hasDoneStuff;
     }
+
+    public TimeAndPrice getPrice(){
+        return new TimeAndPrice(LocalTime.of(12,0), 100);
+    }
 }
+
+record TimeAndPrice(LocalTime time, int price) {}
