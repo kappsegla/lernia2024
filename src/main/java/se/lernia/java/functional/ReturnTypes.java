@@ -31,7 +31,7 @@ public class ReturnTypes {
     }
 
     public static void main(String[] args) {
-        ReturnTypes rt = new ReturnTypes();
+        ReturnTypes rt = new ReturnTypes(null);
         Optional<Product> p = rt.getProductById(1);
 
         p.ifPresentOrElse(System.out::println,
